@@ -5,6 +5,7 @@
 package Parqueo.Web.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table; // Importar Table
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ import jakarta.persistence.TemporalType;
 import java.util.Date;
 
 @Entity
+@Table(name = "reservas") 
 public class Reserva {
 
     @Id
@@ -28,6 +30,11 @@ public class Reserva {
     @ManyToOne
     @JoinColumn(name = "espacio_id")
     private EspacioParqueo espacio;
+    // *** NUEVO: Relación con Vehiculo si quieres la placa directamente ***
+    @ManyToOne
+    @JoinColumn(name = "vehiculo_id") // Asegúrate de que esta columna exista en tu DB
+    private Vehiculo vehiculo;
+    // ******************************************************************
     @Temporal(TemporalType.DATE)
     private Date fechaReserva;
     @Temporal(TemporalType.TIME)
@@ -64,6 +71,15 @@ public class Reserva {
     public void setEspacio(EspacioParqueo espacio) {
         this.espacio = espacio;
     }
+    // Getter y Setter para vehiculo
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
 
     public Date getFechaReserva() {
         return fechaReserva;
@@ -96,5 +112,4 @@ public class Reserva {
     public void setEstado(EstadoReserva estado) {
         this.estado = estado;
     }
-
 }

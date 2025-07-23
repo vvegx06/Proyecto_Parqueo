@@ -3,14 +3,15 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Inicio - Parqueo Fidelitas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
-            --fidelitas-blue: #004AAD; /* Definición del color azul */
+            --fidelitas-red: #004AAD; /* Cambiado a azul para consistencia */
+            --fidelitas-yellow: #FFD700; /* Añadido para consistencia */
         }
 
         body {
@@ -18,31 +19,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         }
 
         .navbar {
-            background-color: var(--fidelitas-blue);
-        }
-        .nav-link:hover {
-            background-color: #003b8a;
+            background-color: var(--fidelitas-red);
         }
 
         .navbar-brand, .nav-link, .footer {
-            color: white !important;
+            color: var(--fidelitas-yellow) !important; /* Cambiado a amarillo para consistencia */
         }
 
         .footer {
-            background-color: var(--fidelitas-blue);
-            padding: 25px 0;
-            color: white;
+            background-color: var(--fidelitas-red);
+            padding: 20px 0;
+            color: var(--fidelitas-yellow); /* Cambiado a amarillo para consistencia */
             text-align: center;
-            font-size: 1rem;
-            border-top: 3px solid #003b8a;
         }
 
         .carousel-caption {
-            background-color: rgba(0, 74, 173, 0.7);
+            background-color: rgba(0, 0, 0, 0.4);
             border-radius: 10px;
-            padding: 15px;
-            width: 80%;
-            margin: 0 auto;
+            padding: 10px;
         }
 
         .logo {
@@ -53,10 +47,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="/img/fidelogo.png" alt="Logo" class="logo">
+        <a class="navbar-brand d-flex align-items-center" th:href="@{/}"> <!-- Enlace a la página de inicio -->
+            <img src="/img/logo.png" alt="Logo" class="logo">
             Parqueo Fidelitas
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,23 +59,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="disponibilidad.html">Disponibilidad</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="hitorial.html">Historial</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="reservar.html">Reservar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="formulario.html">Salir</a>
-                        </li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/disponibilidad}">Disponibilidad</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/reservar}">Reservar</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/historial}">Historial</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/registroVehiculo}">Registrar Vehículo</a></li> <!-- Nuevo enlace -->
+                <li class="nav-item"><a class="nav-link" th:href="@{/zonasParqueo}">Zonas de Parqueo</a></li> <!-- Nuevo enlace -->
+                <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Cerrar Sesión</a></li>
             </ul>
         </div>
     </div>              
 </nav>
 
+<!-- Carrusel -->
 <div id="carouselFidelitas" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -106,21 +96,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselFidelitas" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+        <span class="carousel-control-prev-icon"></span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselFidelitas" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+        <span class="carousel-control-next-icon"></span>
     </button>
 </div>
 
+<!-- Footer -->
 <footer class="footer mt-5">
     <div class="container">
         <p>&copy; 2025 Universidad Fidélitas - Sistema de Parqueo</p>
     </div>
 </footer>
 
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

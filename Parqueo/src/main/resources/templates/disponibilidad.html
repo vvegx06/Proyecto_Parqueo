@@ -57,16 +57,21 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center" href="/">
+        <a class="navbar-brand d-flex align-items-center" th:href="@{/}"> <!-- Enlace a la página de inicio -->
             <img src="/img/logo.png" alt="Logo" class="logo">
             Parqueo Fidelitas
         </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="/disponibilidad">Disponibilidad</a></li>
-                <li class="nav-item"><a class="nav-link" href="/reservar">Reservar</a></li>
-                <li class="nav-item"><a class="nav-link" href="/historial">Historial</a></li>
-                <li class="nav-item"><a class="nav-link" href="/logout">Cerrar Sesión</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/disponibilidad}">Disponibilidad</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/reservar}">Reservar</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/historial}">Historial</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/registroVehiculo}">Registrar Vehículo</a></li> <!-- Nuevo enlace -->
+                <li class="nav-item"><a class="nav-link" th:href="@{/zonasParqueo}">Zonas de Parqueo</a></li> <!-- Nuevo enlace -->
+                <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Cerrar Sesión</a></li>
             </ul>
         </div>
     </div>

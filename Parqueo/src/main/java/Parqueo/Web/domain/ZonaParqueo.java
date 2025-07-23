@@ -10,21 +10,25 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "zonas_parqueo") 
 public class ZonaParqueo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; 
     private String nombre;
     @Enumerated(EnumType.STRING)
-    private TipoZona tipo;
+    private TipoZona tipo; 
     private int capacidadTotal;
+ 
 
     public enum TipoZona {
         ABIERTO, DISCAPACITADOS
     }
+    // Getters y Setters
 
     public Long getId() {
         return id;
@@ -58,4 +62,5 @@ public class ZonaParqueo {
         this.capacidadTotal = capacidadTotal;
     }
 
+    
 }

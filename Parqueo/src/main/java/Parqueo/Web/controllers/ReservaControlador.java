@@ -16,19 +16,25 @@ import java.util.List;
 @Controller
 public class ReservaControlador {
 
-@Autowired
-private ReservaServicio reservaServicio;
+    @Autowired
+    private ReservaServicio reservaServicio;
 
- @GetMapping("/reservar")
-public String mostrarFormularioReserva(Model model) {
-    model.addAttribute("reserva", new Reserva());
-    return "reservar"; 
-}
+    @GetMapping("/reservar")
+    public String mostrarFormularioReserva(Model model) {
+        model.addAttribute("reserva", new Reserva());
+        return "reservar";
+    }
 
-@PostMapping("/reservar")
-public String procesarReserva(Reserva reserva) {
-    reservaServicio.guardarReserva(reserva);
-    return "redirect:/historial"; 
-}
+    @PostMapping("/reservar")
+    public String procesarReserva(Reserva reserva) {
+        reservaServicio.guardarReserva(reserva);
+        return "redirect:/historial";
+    }
 
+    @GetMapping("/historial")
+    public String mostrarHistorial(Model model) {
+        List<Reserva> historial = reservaServicio.obtenerTodasLasReservas();
+        model.addAttribute("historial", historial); 
+        return "historial";
+    }
 }
