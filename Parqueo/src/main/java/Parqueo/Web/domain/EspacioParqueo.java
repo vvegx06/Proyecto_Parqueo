@@ -11,48 +11,24 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+
+
 @Entity
 public class EspacioParqueo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String numeroEspacio;
-    private boolean ocupado;
-    @ManyToOne
-    @JoinColumn(name = "zona_id")
-    private ZonaParqueo zona;
+    private int numero;
+    private boolean disponible;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public String getNumeroEspacio() {
-        return numeroEspacio;
-    }
+    public int getNumero() { return numero; }
+    public void setNumero(int numero) { this.numero = numero; }
 
-    public void setNumeroEspacio(String numeroEspacio) {
-        this.numeroEspacio = numeroEspacio;
-    }
-
-    public boolean isOcupado() {
-        return ocupado;
-    }
-
-    public void setOcupado(boolean ocupado) {
-        this.ocupado = ocupado;
-    }
-
-    public ZonaParqueo getZona() {
-        return zona;
-    }
-
-    public void setZona(ZonaParqueo zona) {
-        this.zona = zona;
-    }
-
+    public boolean isDisponible() { return disponible; }
+    public void setDisponible(boolean disponible) { this.disponible = disponible; }
 }

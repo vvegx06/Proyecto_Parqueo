@@ -16,19 +16,19 @@ import java.util.List;
 @Controller
 public class ReservaControlador {
 
-    @Autowired
-    private ReservaServicio reservaServicio;
+@Autowired
+private ReservaServicio reservaServicio;
 
-    @GetMapping("/reservaEspacio")
-    public String mostrarReservaEspacio(Model model) {
-        List<Reserva> reservas = reservaServicio.obtenerTodasLasReservas();
-        model.addAttribute("reservas", reservas); // Asegúrate de que 'model' es del tipo correcto
-        return "reservaEspacio"; // Vista para reservar espacio
-    }
+ @GetMapping("/reservar")
+public String mostrarFormularioReserva(Model model) {
+    model.addAttribute("reserva", new Reserva());
+    return "reservar"; 
+}
 
-    @PostMapping("/reservaEspacio")
-    public String reservarEspacio(Reserva reserva) {
-        reservaServicio.guardarReserva(reserva);
-        return "redirect:/reservaEspacio"; // Redirigir después de guardar
-    }
+@PostMapping("/reservar")
+public String procesarReserva(Reserva reserva) {
+    reservaServicio.guardarReserva(reserva);
+    return "redirect:/historial"; 
+}
+
 }
