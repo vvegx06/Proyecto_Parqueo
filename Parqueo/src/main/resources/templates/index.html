@@ -3,14 +3,14 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Inicio - Parqueo Fidelitas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
-            --fidelitas-red: #004AAD;
+            --fidelitas-blue: #004AAD; /* Definición del color azul */
         }
 
         body {
@@ -18,7 +18,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         }
 
         .navbar {
-            background-color: var(--fidelitas-red);
+            background-color: var(--fidelitas-blue);
+        }
+        .nav-link:hover {
+            background-color: #003b8a;
         }
 
         .navbar-brand, .nav-link, .footer {
@@ -26,16 +29,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         }
 
         .footer {
-            background-color: var(--fidelitas-red);
-            padding: 20px 0;
+            background-color: var(--fidelitas-blue);
+            padding: 25px 0;
             color: white;
             text-align: center;
+            font-size: 1rem;
+            border-top: 3px solid #003b8a;
         }
 
         .carousel-caption {
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 74, 173, 0.7);
             border-radius: 10px;
-            padding: 10px;
+            padding: 15px;
+            width: 80%;
+            margin: 0 auto;
         }
 
         .logo {
@@ -46,28 +53,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 </head>
 <body>
 
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="/img/logo.png" alt="Logo" class="logo">
+            <img src="/img/fidelogo.png" alt="Logo" class="logo">
             Parqueo Fidelitas
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="/disponibilidad">Disponibilidad</a></li>
-                <li class="nav-item"><a class="nav-link" href="/reservar">Reservar</a></li>
-                <li class="nav-item"><a class="nav-link" href="/historial">Historial</a></li>
-                <li class="nav-item"><a class="nav-link" href="/logout">Cerrar Sesión</a></li>
+                <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="disponibilidad.html">Disponibilidad</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="hitorial.html">Historial</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reservar.html">Reservar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="formulario.html">Salir</a>
+                        </li>
             </ul>
         </div>
     </div>              
 </nav>
 
-<!-- Carrusel -->
 <div id="carouselFidelitas" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -93,21 +106,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselFidelitas" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselFidelitas" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
     </button>
 </div>
 
-<!-- Footer -->
 <footer class="footer mt-5">
     <div class="container">
         <p>&copy; 2025 Universidad Fidélitas - Sistema de Parqueo</p>
     </div>
 </footer>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
