@@ -8,6 +8,8 @@ import Parqueo.Web.domain.Reserva;
 import java.util.List;
 
 public interface ReservaService {
+
     List<Reserva> obtenerTodasLasReservas();
+
     Reserva guardarReserva(Reserva reserva);
 }

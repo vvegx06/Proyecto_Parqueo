@@ -8,10 +8,10 @@ package Parqueo.Web.service;
  *
  * @author sofisantamaria
  */
-
 import Parqueo.Web.domain.EspacioParqueo;
 import java.util.List;
 
 public interface EspacioParqueoService {
+
     List<EspacioParqueo> obtenerTodos();
 }

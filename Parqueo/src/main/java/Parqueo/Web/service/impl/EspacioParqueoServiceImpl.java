@@ -8,7 +8,6 @@ package Parqueo.Web.service.impl;
  *
  * @author sofisantamaria
  */
-
 import Parqueo.Web.domain.EspacioParqueo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

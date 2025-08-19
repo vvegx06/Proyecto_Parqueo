@@ -8,5 +8,6 @@ import Parqueo.Web.domain.ZonaParqueo;
 import java.util.List;
 
 public interface ZonaParqueoService {
+
     List<ZonaParqueo> obtenerTodasLasZonas();
 }

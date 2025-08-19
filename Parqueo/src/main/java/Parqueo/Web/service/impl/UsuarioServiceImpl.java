@@ -11,9 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UsuarioServiceImpl implements UsuarioService  {
-    
-    
+public class UsuarioServiceImpl implements UsuarioService {
 
     private final UsuarioDao usuarioRepository;
 
@@ -45,6 +43,5 @@ public class UsuarioServiceImpl implements UsuarioService  {
     public Usuario buscarPorUsername(String username) {
         return usuarioRepository.findByUsername(username).orElse(null);
     }
-    
-    
+
 }

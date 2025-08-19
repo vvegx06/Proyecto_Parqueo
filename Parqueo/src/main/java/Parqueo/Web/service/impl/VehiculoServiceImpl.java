@@ -13,12 +13,15 @@ import Parqueo.Web.service.VehiculoService;
 
 @Service
 public class VehiculoServiceImpl implements VehiculoService {
+
     @Autowired
     private VehiculoDao vehiculoRepositorio;
+
     @Override
     public List<Vehiculo> obtenerTodosLosVehiculos() {
         return vehiculoRepositorio.findAll();
     }
+
     @Override
     public Vehiculo guardarVehiculo(Vehiculo vehiculo) {
         return vehiculoRepositorio.save(vehiculo);

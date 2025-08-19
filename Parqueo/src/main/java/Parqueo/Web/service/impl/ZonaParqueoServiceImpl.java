@@ -13,8 +13,10 @@ import Parqueo.Web.service.ZonaParqueoService;
 
 @Service
 public class ZonaParqueoServiceImpl implements ZonaParqueoService {
+
     @Autowired
     private ZonaParqueoDao zonaParqueoRepositorio;
+
     @Override
     public List<ZonaParqueo> obtenerTodasLasZonas() {
         return zonaParqueoRepositorio.findAll();
