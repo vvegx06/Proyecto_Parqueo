@@ -9,21 +9,12 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Usuario {
+public class Rol {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
-
-    @Column(unique = true, nullable = false)
-    private String username;
-
-    private String password;
-
-    @ManyToOne
-    @JoinColumn(name = "rol_id")
-    private Rol rol;
 
 }

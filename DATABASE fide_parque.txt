@@ -1,0 +1,129 @@
+DROP DATABASE IF EXISTS fide_parqueo;
+CREATE DATABASE fide_parqueo;
+USE fide_parqueo;
+
+CREATE USER IF NOT EXISTS 'usuario_parqueo'@'localhost' IDENTIFIED BY 'Ufide';
+GRANT ALL PRIVILEGES ON fide_parqueo.* TO 'usuario_parqueo'@'localhost';
+FLUSH PRIVILEGES;
+
+-- ==========================
+-- Tabla Roles
+-- ==========================
+CREATE TABLE roles (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- ==========================
+-- Tabla Usuarios
+-- ==========================
+CREATE TABLE usuarios (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) UNIQUE NOT NULL,
+    username VARCHAR(50) UNIQUE NOT NULL,       -- nuevo para login
+    password VARCHAR(200) NOT NULL,             -- contraseña encriptada con BCrypt
+    enabled BOOLEAN DEFAULT TRUE,               -- habilitado/deshabilitado
+    tipo ENUM('ESTUDIANTE','DOCENTE','SEGURIDAD') NOT NULL,
+    rol_id BIGINT,                              -- relación con tabla roles
+    FOREIGN KEY (rol_id) REFERENCES roles(id)
+);
+
+-- ==========================
+-- Tabla Vehículos
+-- ==========================
+CREATE TABLE vehiculos (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    placa VARCHAR(20) UNIQUE NOT NULL,
+    tipo_placa ENUM('PARTICULAR','OFICIAL','DISCAPACITADO','OTRO') NOT NULL,
+    marca VARCHAR(50),
+    modelo VARCHAR(50),
+    usuario_id BIGINT,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+-- ==========================
+-- Zonas de parqueo
+-- ==========================
+CREATE TABLE zonas_parqueo (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    tipo ENUM('ABIERTO','DISCAPACITADOS') NOT NULL,
+    capacidad_total INT NOT NULL
+);
+
+-- ==========================
+-- Espacios en zonas
+-- ==========================
+CREATE TABLE espacios_parqueo (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    zona_id BIGINT,
+    numero INT NOT NULL,
+    disponible BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (zona_id) REFERENCES zonas_parqueo(id)
+);
+
+-- ==========================
+-- Registros de entrada/salida
+-- ==========================
+CREATE TABLE registros_entrada_salida (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    vehiculo_id BIGINT,
+    espacio_id BIGINT,
+    hora_entrada DATETIME NOT NULL,
+    hora_salida DATETIME,
+    FOREIGN KEY (vehiculo_id) REFERENCES vehiculos(id),
+    FOREIGN KEY (espacio_id) REFERENCES espacios_parqueo(id)
+);
+
+-- ==========================
+-- Reservas
+-- ==========================
+CREATE TABLE reservas (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT,
+    espacio_id BIGINT,
+    vehiculo_id BIGINT,
+    fecha_reserva DATE NOT NULL,
+    hora_inicio TIME NOT NULL,
+    hora_fin TIME NOT NULL,
+    estado ENUM('ACTIVA','UTILIZADA','CANCELADA') DEFAULT 'ACTIVA',
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    FOREIGN KEY (espacio_id) REFERENCES espacios_parqueo(id),
+    FOREIGN KEY (vehiculo_id) REFERENCES vehiculos(id)
+);
+
+-- ==========================
+-- Notificaciones
+-- ==========================
+CREATE TABLE notificaciones (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT,
+    mensaje TEXT,
+    fecha_hora DATETIME DEFAULT CURRENT_TIMESTAMP,
+    leido BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+-- ==========================
+-- Reportes de uso
+-- ==========================
+CREATE TABLE reportes_uso (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    zona_id BIGINT,
+    fecha DATE,
+    hora TIME,
+    cantidad_usada INT,
+    FOREIGN KEY (zona_id) REFERENCES zonas_parqueo(id)
+);
+
+-- ==========================
+-- Datos iniciales
+-- ==========================
+
+INSERT INTO roles (nombre) VALUES ('ADMIN'), ('USER');
+
+-- Contraseñas encriptadas con BCrypt: "admin123" y "user123"
+INSERT INTO usuarios (nombre, correo, username, password, enabled, tipo, rol_id) VALUES
+('Administrador', 'admin@example.com', 'admin', '$2a$10$7qUmnqI3lUpFZf0JphYaTO8BW1oCG6xTjeI4eXz9LqWrYF1z/7WgK', true, 'DOCENTE', 1),
+('Daniel Robles', 'juan.perez@example.com', 'juan', '$2a$10$hTRX95LJ1Eyq9XSuEqQHZ.tnZ2XhFoc6GAc9kP7cJgTga0zF/7wli', true, 'ESTUDIANTE', 2);

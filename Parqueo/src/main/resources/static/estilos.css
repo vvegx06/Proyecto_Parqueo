@@ -1,0 +1,150 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 18 ago 2025, 23:02:23
+    Author     : andre
+*/
+
+/* Filas de tabla en tonos suaves */
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9; /* gris muy claro */
+    color: #222;               /* texto oscuro para buen contraste */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ececec; /* gris claro */
+    color: #222;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: url('/images/fide_paisaje.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #222;
+}
+
+/* Header moderno */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: #004AAD;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+.header .logo {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fefefe;
+    letter-spacing: 1px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 12px;
+}
+
+.nav-menu-link {
+    color: #fefefe;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-menu-link:hover {
+    background-color: #444444;
+    color: #fff;
+}
+
+/* Contenedor principal para empujar footer abajo */
+.main-content {
+    flex: 1; /* hace que esta sección ocupe todo el espacio disponible */
+    display: flex;
+}
+
+/* Layout lateral */
+.aside {
+    width: 22%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    overflow-y: auto;
+}
+
+/* Sección principal */
+.section {
+    width: 78%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    overflow-y: auto;
+}
+
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead {
+    background-color: #004AAD;
+    color: #fff;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+    color: #222;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ececec;
+    color: #222;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Footer moderno fijo al pie */
+.footer {
+    width: 100%;
+    height: 50px;
+    background-color: #004AAD;
+    text-align: center;
+    color: #fafafa;
+    line-height: 50px;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+}

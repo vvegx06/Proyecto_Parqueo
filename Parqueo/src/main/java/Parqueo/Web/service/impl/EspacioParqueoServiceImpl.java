@@ -10,18 +10,18 @@ package Parqueo.Web.service.impl;
  */
 
 import Parqueo.Web.domain.EspacioParqueo;
-import Parqueo.Web.dao.EspacioParqueoRepositorio;
-import Parqueo.Web.service.EspacioParqueoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import Parqueo.Web.dao.EspacioParqueoDao;
+import Parqueo.Web.service.EspacioParqueoService;
 
 @Service
-public class EspacioParqueoServicioImpl implements EspacioParqueoServicio {
+public class EspacioParqueoServiceImpl implements EspacioParqueoService {
 
     @Autowired
-    private EspacioParqueoRepositorio espacioParqueoRepositorio;
+    private EspacioParqueoDao espacioParqueoRepositorio;
 
     @Override
     public List<EspacioParqueo> obtenerTodos() {

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:fragment="head">
+        <title>Parqueo - Universidad Fidélitas</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+        <link th:href="@{/css/estilos.css}" rel="stylesheet"/>
+
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/rutinas.js}"></script>
+    </head>
+
+    <body style="background: #f8f9fa; display: flex; flex-direction: column; min-height: 100vh;">
+
+        <header th:fragment="header" class="header" style="position: fixed; top:0; width:100%; z-index: 1000;">
+            <nav class="navbar navbar-expand-sm navbar-dark"
+                 style="background-color: #004AAD; padding: 0.5rem 1rem; border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <div class="container">
+
+                    <!-- Logo Universidad Fidélitas -->
+                    <a th:href="@{/}" class="navbar-brand fw-bold" style="font-size: 1.5rem; color: #fff; display:flex; align-items:center;">
+                        <img th:src="@{/images/logo-fidelitas.png}" alt="U Fidélitas" style="height:40px; margin-right:10px;">
+                            U Fidélitas
+                    </a>
+
+                    <div class="navbar-text mx-auto fw-semibold text-white d-none d-sm-block" style="font-style: italic;">
+                        <i class="fas fa-car me-1"></i>
+                        Sistema de Parqueo
+                    </div>
+
+                    <button class="navbar-toggler border-0" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
+                            style="background-color: rgba(255,255,255,0.2);">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item px-2">
+                                <a class="nav-link text-white rounded" th:href="@{/espacios/listado}"
+                                   style="transition: 0.3s;" onmouseover="this.style.backgroundColor = '#003580'"
+                                   onmouseout="this.style.backgroundColor = 'transparent'">
+                                    <i class="fas fa-th-large me-1"></i> Espacios
+                                </a>
+                            </li>
+
+                            <li class="nav-item px-2">
+                                <a class="nav-link text-white rounded" th:href="@{/reservas/listado}"
+                                   style="transition: 0.3s;" onmouseover="this.style.backgroundColor = '#003580'"
+                                   onmouseout="this.style.backgroundColor = 'transparent'">
+                                    <i class="fas fa-calendar-check me-1"></i> Reservar
+                                </a>
+                            </li>
+
+                            <li class="nav-item px-2">
+                                <a class="nav-link text-white rounded" th:href="@{/vehiculos/registrar}"
+                                   style="transition: 0.3s;" onmouseover="this.style.backgroundColor = '#003580'"
+                                   onmouseout="this.style.backgroundColor = 'transparent'">
+                                    <i class="fas fa-car-side me-1"></i> Registrar Vehículo
+                                </a>
+                            </li>
+
+                            <li class="nav-item px-2">
+                                <a class="nav-link text-white rounded" th:href="@{/zonas/listado}"
+                                   style="transition: 0.3s;" onmouseover="this.style.backgroundColor = '#003580'"
+                                   onmouseout="this.style.backgroundColor = 'transparent'">
+                                    <i class="fas fa-map me-1"></i> Zonas de Parqueo
+                                </a>
+                            </li>
+
+                            <li class="nav-item px-2">
+                                <a class="nav-link text-white rounded" th:href="@{/historial/listado}"
+                                   style="transition: 0.3s;" onmouseover="this.style.backgroundColor = '#003580'"
+                                   onmouseout="this.style.backgroundColor = 'transparent'">
+                                    <i class="fas fa-history me-1"></i> Historial
+                                </a>
+                            </li>
+
+                            <li class="nav-item px-2 d-flex align-items-center text-white" sec:authorize="isAuthenticated()">
+                                <form method="post" th:action="@{/logout}" class="m-0">
+                                    <button type="submit" class="btn btn-outline-light btn-sm rounded">
+                                        <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+        <footer th:fragment="footer" class="p-3 text-white mt-auto"
+                style="border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: #004AAD; text-align:center;">
+            <div class="container">
+                <p class="m-0 small">
+                    &copy; Universidad Fidélitas - Sistema de Parqueo
+                </p>
+            </div>
+        </footer>
+
+    </body>
+</html>

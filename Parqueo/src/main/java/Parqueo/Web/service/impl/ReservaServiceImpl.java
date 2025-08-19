@@ -4,18 +4,18 @@
  */
 package Parqueo.Web.service.impl;
 
-import Parqueo.Web.dao.ReservaRepositorio;
 import Parqueo.Web.domain.Reserva;
-import Parqueo.Web.service.ReservaServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import Parqueo.Web.dao.ReservaDao;
+import Parqueo.Web.service.ReservaService;
 
 @Service
-public class ReservaServicioImpl implements ReservaServicio {
+public class ReservaServiceImpl implements ReservaService {
 
     @Autowired
-    private ReservaRepositorio reservaRepositorio;
+    private ReservaDao reservaRepositorio;
 
     @Override
     public List<Reserva> obtenerTodasLasReservas() {

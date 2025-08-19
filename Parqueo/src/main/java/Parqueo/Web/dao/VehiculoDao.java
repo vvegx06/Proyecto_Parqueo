@@ -2,12 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package Parqueo.Web.service;
+package Parqueo.Web.dao;
 
 import Parqueo.Web.domain.Vehiculo;
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface VehiculoServicio {
-    List<Vehiculo> obtenerTodosLosVehiculos();
-    Vehiculo guardarVehiculo(Vehiculo vehiculo);
+@Repository
+public interface VehiculoDao extends JpaRepository<Vehiculo, Long> {
+    
 }

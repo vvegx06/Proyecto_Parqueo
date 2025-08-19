@@ -7,6 +7,6 @@ package Parqueo.Web.service;
 import Parqueo.Web.domain.ZonaParqueo;
 import java.util.List;
 
-public interface ZonaParqueoServicio {
+public interface ZonaParqueoService {
     List<ZonaParqueo> obtenerTodasLasZonas();
 }

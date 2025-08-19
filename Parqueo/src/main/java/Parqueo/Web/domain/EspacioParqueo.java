@@ -13,7 +13,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "espacios_parqueo") // <--- ¡CAMBIO AQUÍ!
+@Table(name = "espacios_parqueo") 
 public class EspacioParqueo {
 
     @Id

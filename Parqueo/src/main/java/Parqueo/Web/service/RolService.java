@@ -4,14 +4,16 @@
  */
 package Parqueo.Web.service;
 
-/**
- *
- * @author sofisantamaria
- */
-
-import Parqueo.Web.domain.EspacioParqueo;
+import Parqueo.Web.domain.Rol;
 import java.util.List;
 
-public interface EspacioParqueoServicio {
-    List<EspacioParqueo> obtenerTodos();
+public interface RolService {
+
+    List<Rol> listar();
+
+    Rol guardar(Rol rol);
+
+    Rol buscarPorId(Long id);
+
+    void eliminar(Long id);
 }

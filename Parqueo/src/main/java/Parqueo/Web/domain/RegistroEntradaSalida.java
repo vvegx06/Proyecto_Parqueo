@@ -16,7 +16,7 @@ import jakarta.persistence.TemporalType;
 import java.util.Date;
 
 @Entity
-@Table(name = "registros_entrada_salida") // <--- ¡CAMBIO AQUÍ!
+@Table(name = "registros_entrada_salida") 
 public class RegistroEntradaSalida {
 
     @Id

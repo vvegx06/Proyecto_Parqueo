@@ -7,7 +7,7 @@ package Parqueo.Web.service;
 import Parqueo.Web.domain.Reserva;
 import java.util.List;
 
-public interface ReservaServicio {
+public interface ReservaService {
     List<Reserva> obtenerTodasLasReservas();
     Reserva guardarReserva(Reserva reserva);
 }

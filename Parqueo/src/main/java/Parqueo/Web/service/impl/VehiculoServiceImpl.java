@@ -4,17 +4,17 @@
  */
 package Parqueo.Web.service.impl;
 
-import Parqueo.Web.dao.VehiculoRepositorio;
 import Parqueo.Web.domain.Vehiculo;
-import Parqueo.Web.service.VehiculoServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import Parqueo.Web.dao.VehiculoDao;
+import Parqueo.Web.service.VehiculoService;
 
 @Service
-public class VehiculoServicioImpl implements VehiculoServicio {
+public class VehiculoServiceImpl implements VehiculoService {
     @Autowired
-    private VehiculoRepositorio vehiculoRepositorio;
+    private VehiculoDao vehiculoRepositorio;
     @Override
     public List<Vehiculo> obtenerTodosLosVehiculos() {
         return vehiculoRepositorio.findAll();

@@ -4,17 +4,17 @@
  */
 package Parqueo.Web.service.impl;
 
-import Parqueo.Web.dao.ZonaParqueoRepositorio;
 import Parqueo.Web.domain.ZonaParqueo;
-import Parqueo.Web.service.ZonaParqueoServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import Parqueo.Web.dao.ZonaParqueoDao;
+import Parqueo.Web.service.ZonaParqueoService;
 
 @Service
-public class ZonaParqueoServicioImpl implements ZonaParqueoServicio {
+public class ZonaParqueoServiceImpl implements ZonaParqueoService {
     @Autowired
-    private ZonaParqueoRepositorio zonaParqueoRepositorio;
+    private ZonaParqueoDao zonaParqueoRepositorio;
     @Override
     public List<ZonaParqueo> obtenerTodasLasZonas() {
         return zonaParqueoRepositorio.findAll();

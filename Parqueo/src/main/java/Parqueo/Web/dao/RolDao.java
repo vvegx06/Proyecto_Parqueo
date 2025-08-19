@@ -4,15 +4,8 @@
  */
 package Parqueo.Web.dao;
 
-/**
- *
- * @author sofisantamaria
- */
-
-
-import Parqueo.Web.domain.EspacioParqueo;
+import Parqueo.Web.domain.Rol;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EspacioParqueoRepositorio extends JpaRepository<EspacioParqueo, Long> {
+public interface RolDao extends JpaRepository<Rol, Long> {
 }
-

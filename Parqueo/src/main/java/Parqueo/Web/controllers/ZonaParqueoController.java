@@ -5,18 +5,18 @@
 package Parqueo.Web.controllers;
 
 import Parqueo.Web.domain.ZonaParqueo;
-import Parqueo.Web.service.ZonaParqueoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
+import Parqueo.Web.service.ZonaParqueoService;
 
 @Controller
-public class ZonaParqueoControlador {
+public class ZonaParqueoController {
 
     @Autowired
-    private ZonaParqueoServicio zonaParqueoServicio;
+    private ZonaParqueoService zonaParqueoServicio;
 
     @GetMapping("/zonasParqueo")
     public String mostrarZonasParqueo(Model model) {

@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ZonaParqueoRepositorio extends JpaRepository<ZonaParqueo, Long> {
+public interface ZonaParqueoDao extends JpaRepository<ZonaParqueo, Long> {
     // Métodos personalizados si es necesario
 }
