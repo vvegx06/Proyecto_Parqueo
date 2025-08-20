@@ -5,22 +5,18 @@
 
 
 function readURL(input) {
+    // Verifica que se haya seleccionado un archivo
     if (input.files && input.files[0]) {
-        var reader = new FileReader();
+        var reader = new FileReader(); // Crea un objeto FileReader para leer archivos
+        
+        // Evento que se dispara cuando se termina de leer el archivo
         reader.onload = function (e) {
-            $('#blah')
-                    .attr('src', e.target.result)
-                    .height(200);
+            $('#blah') // Selecciona el elemento con id="blah"
+                .attr('src', e.target.result) // Cambia la fuente de la imagen al contenido leído
+                .height(200); // Ajusta la altura de la imagen a 200px
         };
+        
+        // Lee el archivo seleccionado como una URL de datos (base64)
         reader.readAsDataURL(input.files[0]);
     }
-}
-
-/* La siguiente función se utiliza para activar la cantidad de elementos seleccionados 
- en el carrito de compras utilizando un llamado "ajax" */
-function addCard(formulario) {
-    var valor = formulario.elements[0].value;
-    var url = '/carrito/agregar';
-    url = url + '/' + valor;
-    $("#resultsBlock").load(url);
 }

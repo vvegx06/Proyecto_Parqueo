@@ -14,14 +14,16 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity // <--- importante para @PreAuthorize
+@EnableMethodSecurity // Permite usar @PreAuthorize en los controladores
 public class ProjectConfig {
 
+    // Bean para encriptar contraseñas con BCrypt
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    // Configura un proveedor de autenticación que usa nuestro UserDetailsService y el encoder
     private DaoAuthenticationProvider daoAuthProvider(UserDetailsService uds, BCryptPasswordEncoder pe) {
         var provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(uds);
@@ -29,33 +31,35 @@ public class ProjectConfig {
         return provider;
     }
 
+    // Bean que maneja la autenticación usando nuestro proveedor
     @Bean
     public AuthenticationManager authenticationManager(UserDetailsService uds, BCryptPasswordEncoder pe) {
         return new ProviderManager(daoAuthProvider(uds, pe));
     }
 
+    // Configuración principal de seguridad web
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http,
                                                    UserDetailsService uds,
                                                    BCryptPasswordEncoder pe) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers(
-                    "/", "/index",
-                    "/login", "/registro", "/registro/**",
-                    "/error",
-                    "/webjars/**", "/css/**", "/js/**", "/images/**", "/assets/**", "/favicon.ico"
-                ).permitAll()
+                // URLs públicas
+                .requestMatchers("/", "/index", "/login", "/registro/**",
+                                 "/error", "/webjars/**", "/css/**", "/js/**", "/images/**", "/assets/**", "/favicon.ico")
+                .permitAll()
 
-                // zonas: listado accesible a cualquier autenticado
+                // Listado accesible para cualquier usuario autenticado
                 .requestMatchers("/zonas/listado").authenticated()
 
-                // alta/edición/borrado solo ADMIN
+                // Alta/edición/borrado solo ADMIN
                 .requestMatchers("/zonas/nuevo", "/zonas/guardar", "/zonas/editar/**", "/zonas/eliminar/**")
                     .hasRole("ADMIN")
 
+                // Cualquier otra petición requiere autenticación
                 .anyRequest().authenticated()
             )
+            // Configuración de login
             .formLogin(form -> form
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
@@ -63,11 +67,13 @@ public class ProjectConfig {
                 .failureUrl("/login?error")
                 .permitAll()
             )
+            // Configuración de logout
             .logout(logout -> logout
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
             )
+            // Añade nuestro proveedor de autenticación
             .authenticationProvider(daoAuthProvider(uds, pe));
 
         return http.build();

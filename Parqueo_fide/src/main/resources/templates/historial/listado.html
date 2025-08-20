@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head th:replace="~{layout/plantilla :: head}">
-  <title>Historial</title>
-</head>
-<body class="d-flex flex-column min-vh-100">
-<header th:replace="~{layout/plantilla :: header}"></header>
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Historial</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100" style="background: url('/images/fide_paisaje.png') no-repeat center center fixed; background-size: cover;">
+        <header th:replace="~{layout/plantilla :: header}"></header>
 
-<main class="container my-5 pt-5">
-  <div class="card shadow-sm">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="m-0">
-        <i class="fas fa-history me-1"></i>
-        Historial
-      </h5>
-      <span class="badge bg-secondary" th:text="${soloPropios} ? 'Mostrando tus registros' : 'Mostrando todos (ADMIN)'"></span>
-    </div>
-    <div class="card-body p-0">
-      <div class="table-responsive">
-        <table class="table table-hover table-striped m-0 align-middle">
-          <thead class="table-light">
-            <tr>
-              <th>ID</th>
-              <th>Vehículo</th>
-              <th>Espacio</th>
-              <th>Entrada</th>
-              <th>Salida</th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr th:if="${#lists.isEmpty(registros)}">
-            <td colspan="5" class="text-center py-4 text-muted">
-              No hay registros.
-            </td>
-          </tr>
-          <tr th:each="reg : ${registros}">
-            <td th:text="${reg.id}">1</td>
-            <td>
-              <div><strong th:text="${reg.vehiculo != null ? reg.vehiculo.placa : '—'}">XYZ123</strong></div>
-              <div class="small text-muted" th:text="${reg.vehiculo != null && reg.vehiculo.marca != null ? reg.vehiculo.marca : ''}"></div>
-            </td>
-            <td>
-              <span th:text="${
-                   reg.espacio != null ?
-                     ( (reg.espacio.zona != null ? reg.espacio.zona.nombre : 'Zona ?') + '  #'+ reg.espacio.numero )
-                     : '—'
-                 }">Zona A #1</span>
-            </td>
-            <td>
-              <span th:text="${reg.horaEntrada != null ? #temporals.format(reg.horaEntrada, 'dd/MM/yyyy HH:mm') : '—'}">01/01/2025 08:00</span>
-            </td>
-            <td>
-              <span th:text="${reg.horaSalida != null ? #temporals.format(reg.horaSalida, 'dd/MM/yyyy HH:mm') : '—'}">01/01/2025 10:00</span>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</main>
+        <main class="container my-5 pt-5">
+            <div class="card shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="m-0">
+                        <i class="fas fa-history me-1"></i>
+                        Historial
+                    </h5>
+                    <span class="badge bg-secondary" th:text="${soloPropios} ? 'Mostrando tus registros' : 'Mostrando todos (ADMIN)'"></span>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped m-0 align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Vehículo</th>
+                                    <th>Espacio</th>
+                                    <th>Entrada</th>
+                                    <th>Salida</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:if="${#lists.isEmpty(registros)}">
+                                    <td colspan="5" class="text-center py-4 text-muted">
+                                        No hay registros.
+                                    </td>
+                                </tr>
+                                <tr th:each="reg : ${registros}">
+                                    <td th:text="${reg.id}">1</td>
+                                    <td>
+                                        <div><strong th:text="${reg.vehiculo != null ? reg.vehiculo.placa : '—'}">XYZ123</strong></div>
+                                        <div class="small text-muted" th:text="${reg.vehiculo != null && reg.vehiculo.marca != null ? reg.vehiculo.marca : ''}"></div>
+                                    </td>
+                                    <td>
+                                        <span th:text="${
+                                              reg.espacio != null ?
+                                              ( (reg.espacio.zona != null ? reg.espacio.zona.nombre : 'Zona ?') + '  #'+ reg.espacio.numero )
+                                              : '—'
+                                              }">Zona A #1</span>
+                                    </td>
+                                    <td>
+                                        <span th:text="${reg.horaEntrada != null ? #temporals.format(reg.horaEntrada, 'dd/MM/yyyy HH:mm') : '—'}">01/01/2025 08:00</span>
+                                    </td>
+                                    <td>
+                                        <span th:text="${reg.horaSalida != null ? #temporals.format(reg.horaSalida, 'dd/MM/yyyy HH:mm') : '—'}">01/01/2025 10:00</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
 
-<footer th:replace="~{layout/plantilla :: footer}"></footer>
-</body>
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
 </html>

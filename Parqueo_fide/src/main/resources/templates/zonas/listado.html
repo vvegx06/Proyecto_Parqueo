@@ -1,61 +1,61 @@
 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="~{layout/plantilla :: head}"></head>
-<body class="d-flex flex-column min-vh-100">
-<header th:replace="~{layout/plantilla :: header}"></header>
+    <head th:replace="~{layout/plantilla :: head}"></head>
+    <body class="d-flex flex-column min-vh-100" style="background: url('/images/fide_paisaje.png') no-repeat center center fixed; background-size: cover;">
+        <header th:replace="~{layout/plantilla :: header}"></header>
 
-<main class="container py-4 flex-grow-1">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h3 class="m-0">Zonas de parqueo</h3>
-    <a sec:authorize="hasRole('ADMIN')" class="btn btn-primary" th:href="@{/zonas/nuevo}">
-      <i class="fas fa-plus"></i> Nueva zona
-    </a>
-  </div>
+        <main class="container py-4 flex-grow-1">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="m-0">Zonas de parqueo</h3>
+                <a sec:authorize="hasRole('ADMIN')" class="btn btn-primary" th:href="@{/zonas/nuevo}">
+                    <i class="fas fa-plus"></i> Nueva zona
+                </a>
+            </div>
 
-  <div th:if="${ok}" class="alert alert-success" th:text="${ok}"></div>
-  <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+            <div th:if="${ok}" class="alert alert-success" th:text="${ok}"></div>
+            <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
 
-  <div class="card shadow-sm">
-    <div class="card-body p-0">
-      <table class="table table-striped m-0">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Tipo</th>
-            <th>Capacidad</th>
-            <th sec:authorize="hasRole('ADMIN')" class="text-end">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="z : ${zonas}">
-            <td th:text="${z.id}">1</td>
-            <td th:text="${z.nombre}">Zona A</td>
-            <td th:text="${z.tipo}">ABIERTO</td>
-            <td th:text="${z.capacidadTotal}">50</td>
-            <td sec:authorize="hasRole('ADMIN')" class="text-end">
-              <a class="btn btn-sm btn-warning" th:href="@{'/zonas/editar/' + ${z.id}}">
-                <i class="fas fa-edit"></i> Editar
-              </a>
-              <form th:action="@{'/zonas/eliminar/' + ${z.id}}" method="post" class="d-inline">
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-                <button class="btn btn-sm btn-danger" type="submit"
-                        onclick="return confirm('¿Eliminar esta zona?')">
-                  <i class="fas fa-trash"></i> Eliminar
-                </button>
-              </form>
-            </td>
-          </tr>
-          <tr th:if="${#lists.isEmpty(zonas)}">
-            <td colspan="5" class="text-center text-muted py-4">No hay zonas registradas.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</main>
+            <div class="card shadow-sm">
+                <div class="card-body p-0">
+                    <table class="table table-striped m-0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Capacidad</th>
+                                <th sec:authorize="hasRole('ADMIN')" class="text-end">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="z : ${zonas}">
+                                <td th:text="${z.id}">1</td>
+                                <td th:text="${z.nombre}">Zona A</td>
+                                <td th:text="${z.tipo}">ABIERTO</td>
+                                <td th:text="${z.capacidadTotal}">50</td>
+                                <td sec:authorize="hasRole('ADMIN')" class="text-end">
+                                    <a class="btn btn-sm btn-warning" th:href="@{'/zonas/editar/' + ${z.id}}">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </a>
+                                    <form th:action="@{'/zonas/eliminar/' + ${z.id}}" method="post" class="d-inline">
+                                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                        <button class="btn btn-sm btn-danger" type="submit"
+                                                onclick="return confirm('¿Eliminar esta zona?')">
+                                            <i class="fas fa-trash"></i> Eliminar
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(zonas)}">
+                                <td colspan="5" class="text-center text-muted py-4">No hay zonas registradas.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
 
-<footer th:replace="~{layout/plantilla :: footer}"></footer>
-</body>
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
 </html>

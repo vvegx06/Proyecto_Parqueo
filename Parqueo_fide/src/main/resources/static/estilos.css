@@ -9,21 +9,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 /* Filas de tabla en tonos suaves */
 tbody tr:nth-child(odd) {
-    background-color: #f9f9f9; /* gris muy claro */
+    background-color: #f9f9f9; /* gris muy claro para filas impares */
     color: #222;               /* texto oscuro para buen contraste */
 }
 
 tbody tr:nth-child(even) {
-    background-color: #ececec; /* gris claro */
-    color: #222;
+    background-color: #ececec; /* gris claro para filas pares */
+    color: #222;               /* texto oscuro */
 }
 
+/* Reset global de márgenes y paddings */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* asegura que padding y border se incluyan en el ancho total */
 }
 
+/* Altura completa del html y body */
 html, body {
     height: 100%;
 }
@@ -32,96 +34,101 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: url('/images/fide_paisaje.png') no-repeat center center fixed;
-    background-size: cover;
-    color: #222;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* tipografía moderna */
+    display: flex;                 /* layout flexible */
+    flex-direction: column;        /* columna vertical para header, main y footer */
+    min-height: 100vh;             /* al menos toda la altura de la pantalla */
+    background: url('/images/fide_paisaje.png') no-repeat center center fixed; /* imagen de fondo fija */
+    background-size: cover;        /* cubrir todo el fondo */
+    color: #222;                   /* color de texto general */
 }
 
 /* Header moderno */
 .header {
-    position: fixed;
+    position: fixed;               /* siempre visible arriba */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 90px;
-    background-color: #004AAD;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
+    width: 100%;                   /* ancho completo */
+    height: 90px;                  /* altura del header */
+    background-color: #004AAD;     /* azul corporativo */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3); /* sombra para dar profundidad */
+    z-index: 1000;                 /* encima de otros elementos */
+    display: flex;                 /* layout horizontal */
+    align-items: center;           /* centrado vertical */
+    justify-content: space-between; /* separación entre logo y menú */
+    padding: 0 40px;               /* espacio lateral interno */
 }
 
+/* Logo dentro del header */
 .header .logo {
-    font-size: 32px;
-    font-weight: 700;
-    color: #fefefe;
-    letter-spacing: 1px;
+    font-size: 32px;               /* tamaño del logo */
+    font-weight: 700;              /* negrita */
+    color: #fefefe;                /* blanco */
+    letter-spacing: 1px;           /* espacio entre letras */
 }
 
+/* Menú de navegación */
 .nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 12px;
+    display: flex;                 /* elementos en fila */
+    list-style: none;              /* quitar viñetas */
+    gap: 12px;                     /* espacio entre items */
 }
 
+/* Links del menú */
 .nav-menu-link {
-    color: #fefefe;
-    text-decoration: none;
+    color: #fefefe;                /* color blanco */
+    text-decoration: none;         /* quitar subrayado */
     font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    padding: 8px 16px;             /* espacio interno */
+    border-radius: 8px;            /* bordes redondeados */
+    transition: all 0.3s ease;     /* animación suave al hover */
 }
 
+/* Efecto hover en links */
 .nav-menu-link:hover {
-    background-color: #444444;
-    color: #fff;
+    background-color: #444444;     /* gris oscuro al pasar el mouse */
+    color: #fff;                   /* texto blanco */
 }
 
 /* Contenedor principal para empujar footer abajo */
 .main-content {
-    flex: 1; /* hace que esta sección ocupe todo el espacio disponible */
-    display: flex;
+    flex: 1;                       /* ocupa todo el espacio disponible */
+    display: flex;                 /* layout flexible interno */
 }
 
 /* Layout lateral */
 .aside {
-    width: 22%;
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 0 10px 10px 0;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
-    overflow-y: auto;
+    width: 22%;                     /* ancho lateral */
+    background-color: #f0f0f0;     /* fondo gris claro */
+    padding: 20px;                  /* espacio interno */
+    border-radius: 0 10px 10px 0;   /* bordes redondeados en la parte derecha */
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1); /* sombra lateral */
+    overflow-y: auto;               /* scroll vertical si hay mucho contenido */
 }
 
 /* Sección principal */
 .section {
-    width: 78%;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-    overflow-y: auto;
+    width: 78%;                     /* ocupa el resto del ancho */
+    background-color: #fff;         /* fondo blanco */
+    padding: 20px;                  /* espacio interno */
+    border-radius: 10px;            /* bordes redondeados */
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05); /* sombra ligera */
+    overflow-y: auto;               /* scroll vertical si es necesario */
 }
 
 /* Tablas */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+    width: 100%;                    /* ocupa todo el ancho */
+    border-collapse: collapse;      /* unir bordes */
+    margin-bottom: 20px;            /* espacio inferior */
 }
 
 thead {
-    background-color: #004AAD;
-    color: #fff;
+    background-color: #004AAD;      /* fondo azul para encabezado */
+    color: #fff;                    /* texto blanco */
 }
 
+/* Filas de la tabla ya comentadas arriba */
 tbody tr:nth-child(odd) {
     background-color: #f9f9f9;
     color: #222;
@@ -132,19 +139,20 @@ tbody tr:nth-child(even) {
     color: #222;
 }
 
+/* Celdas de tabla */
 th, td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    padding: 12px 15px;             /* espacio interno de celdas */
+    text-align: left;               /* alineación a la izquierda */
+    border-bottom: 1px solid #ddd;  /* línea divisoria */
 }
 
 /* Footer moderno fijo al pie */
 .footer {
     width: 100%;
-    height: 50px;
-    background-color: #004AAD;
+    height: 50px;                   /* altura */
+    background-color: #004AAD;      /* mismo azul del header */
     text-align: center;
-    color: #fafafa;
-    line-height: 50px;
-    box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+    color: #fafafa;                 /* texto blanco */
+    line-height: 50px;              /* centrado vertical */
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.2); /* sombra hacia arriba */
 }
