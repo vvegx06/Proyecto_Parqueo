@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head th:replace="~{layout/plantilla :: head}"></head>
-    <body class="d-flex flex-column min-vh-100" style="background: url('/images/fide_paisaje.png') no-repeat center center fixed; background-size: cover;">
+    <body class="d-flex flex-column min-vh-100" 
+          style="background: url('/images/parqueosU.jpg') no-repeat center center fixed; background-size: cover;">
         <header th:replace="~{layout/plantilla :: header}"></header>
 
         <main class="container py-4 flex-grow-1">
@@ -16,8 +17,15 @@
             <div th:if="${ok}" class="alert alert-success" th:text="${ok}"></div>
             <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
 
-            <div class="card shadow-sm">
-                <div class="card-body p-0">
+            <!-- Card principal con fondo gris semitransparente -->
+            <div class="card shadow-sm" style="background-color: rgba(240, 240, 240, 0.95);">
+                <div class="card-body p-3">
+
+                    <!-- Título dentro del cuadro -->
+                    <div class="text-center mb-3">
+                        <h2 class="fw-bold">Zonas del Parqueo</h2>
+                    </div>
+
                     <table class="table table-striped m-0">
                         <thead>
                             <tr>
