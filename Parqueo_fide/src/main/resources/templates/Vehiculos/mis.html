@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Mis Vehículos</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100" style="background: url('/images/fide_paisaje.png') no-repeat center center fixed; background-size: cover;">
+        <header th:replace="~{layout/plantilla :: header}"></header>
+
+        <main class="container py-5 flex-grow-1">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="m-0">Mis vehículos</h4>
+                <a class="btn btn-success" th:href="@{/vehiculos/registrar}">
+                    <i class="fas fa-plus"></i> Agregar
+                </a>
+            </div>
+
+            <div th:if="${#lists.isEmpty(lista)}" class="alert alert-info">
+                Aún no has registrado vehículos.
+            </div>
+
+            <div th:if="${!#lists.isEmpty(lista)}" class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Placa</th>
+                            <th>Tipo</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="v : ${lista}">
+                            <td th:text="${v.placa}">ABC123</td>
+                            <td th:text="${v.tipoPlaca}">PARTICULAR</td>
+                            <td th:text="${v.marca}">Toyota</td>
+                            <td th:text="${v.modelo}">Corolla</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>

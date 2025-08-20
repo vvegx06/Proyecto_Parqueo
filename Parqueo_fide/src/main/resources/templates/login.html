@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TechShop</title>
+    </head>
+
+    <body class="d-flex flex-column min-vh-100"
+          style="background: url('/images/fide_paisaje.png') no-repeat center center fixed; background-size: cover;">
+
+        <header th:replace="~{layout/plantilla :: header}"></header>
+
+        <main class="flex-grow-1 d-flex justify-content-center align-items-center">
+            <section id="login" class="w-100">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="card shadow">
+                                <div class="card-header text-center">
+                                    <h4>[[#{login.login}]]</h4>
+                                </div>
+
+                                <div class="card-body">
+
+                                    <!-- Mensajes de estado -->
+                                    <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                                        [[#{login.error}]] <!-- Ej: Usuario o contraseña inválidos -->
+                                    </div>
+                                    <div th:if="${param.logout}" class="alert alert-info" role="alert">
+                                        [[#{login.logout}]] <!-- Ej: Sesión cerrada correctamente -->
+                                    </div>
+                                    <div th:if="${param.registered}" class="alert alert-success" role="alert">
+                                        [[#{login.registered}]] <!-- Ej: Cuenta creada, ya podés iniciar sesión -->
+                                    </div>
+
+                                    <form method="POST" th:action="@{/login}">
+                                        <!-- CSRF obligatorio -->
+                                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+                                        <div class="mb-3">
+                                            <label for="username" class="form-label">[[#{login.username}]]:</label>
+                                            <!-- Repone el último usuario ingresado si el login falló -->
+                                            <input type="text"
+                                                   class="form-control"
+                                                   name="username"
+                                                   id="username"
+                                                   required
+                                                   autofocus
+                                                   th:value="${session.SPRING_SECURITY_LAST_USERNAME}">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label">[[#{login.password}]]:</label>
+                                            <input type="password"
+                                                   class="form-control"
+                                                   name="password"
+                                                   id="password"
+                                                   required>
+                                        </div>
+
+                                        <div class="mb-3 d-grid">
+                                            <button type="submit" class="btn btn-primary btn-block">
+                                                [[#{login.login}]]
+                                            </button>
+                                        </div>
+
+                                        <!-- Enlace a registro (respetando tu ruta /registro/nuevo) -->
+                                        <div class="mb-3 d-grid">
+                                            <a th:href="@{/registro/nuevo}" class="btn btn-success btn-block">
+                                                <i class="fas fa-user-plus"></i> [[#{login.registrarse}]]
+                                            </a>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>
