@@ -6,31 +6,48 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="~{layout/plantilla :: head}">
-    <title>Parqueo Fide</title>
-</head>
-<body class="d-flex flex-column min-vh-100" style="background: url('/images/fide_paisaje.png') no-repeat center center fixed; background-size: cover;">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Parqueo Fide</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100" style="background: url('/images/edic.jpg') no-repeat center center fixed; background-size: cover;">
 
-    <header th:replace="~{layout/plantilla :: header}"></header>
+        <header th:replace="~{layout/plantilla :: header}"></header>
 
-    <main class="flex-grow-1 d-flex justify-content-center align-items-center">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8">
-                    <div class="ratio ratio-16x9 shadow rounded-4 overflow-hidden">
-                        <iframe
-                            src="//www.youtube.com/embed/JrudSRECnS8"
-                            title="U Fide"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen
-                            referrerpolicy="strict-origin-when-cross-origin">
-                        </iframe>
+        <main class="flex-grow-1 d-flex flex-column justify-content-center align-items-center py-4">
+
+            <!-- Título del sistema -->
+            <h2 class="mb-3 text-center" style="color: #004AAD; font-weight: 700;">Sistema de Parqueo</h2>
+
+            <!-- Texto descriptivo dentro de un cuadro gris semitransparente -->
+            <div class="card shadow-sm mb-4" style="background-color: rgba(240, 240, 240, 0.85); max-width: 900px;">
+                <div class="card-body">
+                    <p class="mb-0 text-center fw-bold">
+                        El parqueo de la Universidad Fidélitas ofrece un espacio seguro y organizado para estudiantes, docentes y visitantes. 
+                        Cuenta con zonas señalizadas, control de acceso y disponibilidad en tiempo real, facilitando la movilidad dentro del campus 
+                        y optimizando el uso de los espacios. Su sistema moderno permite gestionar reservas y controlar la ocupación, brindando comodidad y seguridad a toda la comunidad universitaria.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Video -->
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-10 col-lg-8">
+                        <div class="ratio ratio-16x9 shadow rounded-4 overflow-hidden">
+                            <iframe
+                                src="//www.youtube.com/embed/JrudSRECnS8"
+                                title="U Fide"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                                referrerpolicy="strict-origin-when-cross-origin">
+                            </iframe>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
 
-    <footer th:replace="~{layout/plantilla :: footer}"></footer>
-</body>
+        </main>
+
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
 </html>
